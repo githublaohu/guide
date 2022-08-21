@@ -44,5 +44,12 @@
 			<version>1.18.22</version>
 			<scope>compile</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-s3</artifactId>
+			<version>1.9.9</version>
+		</dependency>
+
 	</dependencies>
 </project>

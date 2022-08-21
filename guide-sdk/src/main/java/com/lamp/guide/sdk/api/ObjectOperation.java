@@ -2,8 +2,12 @@ package com.lamp.guide.sdk.api;
 
 import com.lamp.guide.sdk.api.model.objectoperation.AppendObjectRequest;
 import com.lamp.guide.sdk.api.model.objectoperation.AppendObjectResponse;
+import com.lamp.guide.sdk.api.model.objectoperation.CompleteMultipartUploadRequest;
+import com.lamp.guide.sdk.api.model.objectoperation.CompleteMultipartUploadResponse;
 import com.lamp.guide.sdk.api.model.objectoperation.PutObjectRequest;
 import com.lamp.guide.sdk.api.model.objectoperation.PutObjectResponse;
+import com.lamp.guide.sdk.api.model.objectoperation.UploadFileRequest;
+import com.lamp.guide.sdk.api.model.objectoperation.UploadFileResponse;
 
 /**
  * 上传文件
@@ -18,7 +22,7 @@ public interface ObjectOperation {
 	
 	public AppendObjectResponse appendObject(AppendObjectRequest appendObjectRequest);
 	
-	public void uploadFile();
+	public UploadFileResponse uploadFile(UploadFileRequest uploadFileRequest );
 	
-	public void completeMultipartUpload();
+	public CompleteMultipartUploadResponse completeMultipartUpload(CompleteMultipartUploadRequest completeMultipartUploadRequest);
 }

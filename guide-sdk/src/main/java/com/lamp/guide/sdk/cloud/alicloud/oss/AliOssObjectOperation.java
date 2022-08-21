@@ -7,8 +7,14 @@ import com.aliyun.oss.model.PutObjectResult;
 import com.lamp.guide.sdk.api.ObjectOperation;
 import com.lamp.guide.sdk.api.event.ProgressEvent;
 import com.lamp.guide.sdk.api.event.ProgressListener;
+import com.lamp.guide.sdk.api.model.objectoperation.AppendObjectRequest;
+import com.lamp.guide.sdk.api.model.objectoperation.AppendObjectResponse;
+import com.lamp.guide.sdk.api.model.objectoperation.CompleteMultipartUploadRequest;
+import com.lamp.guide.sdk.api.model.objectoperation.CompleteMultipartUploadResponse;
 import com.lamp.guide.sdk.api.model.objectoperation.PutObjectRequest;
 import com.lamp.guide.sdk.api.model.objectoperation.PutObjectResponse;
+import com.lamp.guide.sdk.api.model.objectoperation.UploadFileRequest;
+import com.lamp.guide.sdk.api.model.objectoperation.UploadFileResponse;
 
 /**
  * 文档地址
@@ -37,7 +43,7 @@ public class AliOssObjectOperation extends AliOssClient implements ObjectOperati
 			aliPutObjectRequest.setMetadata(this.crateObjectMetadata(putObjectRequest.getMetadata()));
 		}
 				
-		PutObjectResult putObjectResult = ossClient.putObject(aliPutObjectRequest).
+		PutObjectResult putObjectResult = ossClient.putObject(aliPutObjectRequest);
 		PutObjectResponse putObjectResponse = new PutObjectResponse();
 		
 		putObjectResponse.setETag(putObjectResult.getETag());
@@ -59,6 +65,25 @@ public class AliOssObjectOperation extends AliOssClient implements ObjectOperati
 			this.progressListener.progressChanged(newProgressEvent);
 		}
 		
+	}
+
+	@Override
+	public AppendObjectResponse appendObject(AppendObjectRequest appendObjectRequest) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public UploadFileResponse uploadFile(UploadFileRequest uploadFileRequest) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CompleteMultipartUploadResponse completeMultipartUpload(
+			CompleteMultipartUploadRequest completeMultipartUploadRequest) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
 
