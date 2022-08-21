@@ -1,11 +1,10 @@
 package com.lamp.guide.sdk.api;
 
-import com.aliyun.oss.model.GenericRequest;
+import com.lamp.guide.sdk.api.http.GenericRequest;
 import com.lamp.guide.sdk.api.model.objectoperation.AppendObjectRequest;
 import com.lamp.guide.sdk.api.model.objectoperation.AppendObjectResponse;
 import com.lamp.guide.sdk.api.model.objectoperation.CompleteMultipartUploadRequest;
 import com.lamp.guide.sdk.api.model.objectoperation.CompleteMultipartUploadResponse;
-import com.lamp.guide.sdk.api.model.objectoperation.DoesObjectExistResponse;
 import com.lamp.guide.sdk.api.model.objectoperation.PutObjectRequest;
 import com.lamp.guide.sdk.api.model.objectoperation.PutObjectResponse;
 import com.lamp.guide.sdk.api.model.objectoperation.UploadFileRequest;

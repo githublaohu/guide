@@ -1,7 +1,7 @@
 package com.lamp.guide.sdk.cloud.alicloud.oss;
 
 import com.lamp.guide.sdk.api.CloudConfig;
-import com.lamp.guide.sdk.api.model.objectoperation.DoesObjectExistResponse;
+import com.lamp.guide.sdk.api.http.GenericRequest;
 import com.lamp.guide.sdk.api.model.objectoperation.PutObjectRequest;
 
 public class AliOssObjectOperationTest {
@@ -24,8 +24,9 @@ public class AliOssObjectOperationTest {
 		aliOssObjectOperation.putObject(putObjectRequest);
 		
 		// 查询
-		DoesObjectExistResponse doesObjectExistResponse = new DoesObjectExistResponse();
-		aliOssObjectOperation.doesObjectExist(doesObjectExistResponse);
+		GenericRequest genericRequest = new GenericRequest();
+		genericRequest.setKey(putObjectRequest.getKey());
+		aliOssObjectOperation.doesObjectExist(genericRequest);
 	}
 
 	public void appendObject() {
