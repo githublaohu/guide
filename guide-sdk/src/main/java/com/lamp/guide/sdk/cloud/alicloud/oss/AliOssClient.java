@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
+import com.aliyun.oss.model.GenericRequest;
 import com.lamp.guide.sdk.api.CloudConfig;
 import com.lamp.guide.sdk.api.model.objectoperation.ObjectMetadata;
 
@@ -26,5 +27,18 @@ public class AliOssClient {
 		
 				
 		return aliObjectMetadata;
+	}
+	
+	public com.aliyun.oss.model.GenericRequest copyGenericRequest(GenericRequest genericRequest ) {
+		com.aliyun.oss.model.GenericRequest newGenericRequest = new com.aliyun.oss.model.GenericRequest();
+		this.copyGenericRequest(newGenericRequest, genericRequest);
+		return newGenericRequest;
+	}
+	
+	public void  copyGenericRequest(com.aliyun.oss.model.GenericRequest newGenericRequest ,GenericRequest genericRequest ) {
+		newGenericRequest.setKey(genericRequest.getKey());
+		newGenericRequest.setBucketName(genericRequest.getBucketName());
+		newGenericRequest.setVersionId(genericRequest.getVersionId());
+		
 	}
 }

@@ -3,6 +3,7 @@ package com.lamp.guide.sdk.cloud.alicloud.oss;
 import java.util.Objects;
 
 import com.aliyun.oss.event.ProgressEventType;
+import com.aliyun.oss.model.GenericRequest;
 import com.aliyun.oss.model.PutObjectResult;
 import com.lamp.guide.sdk.api.ObjectOperation;
 import com.lamp.guide.sdk.api.event.ProgressEvent;
@@ -11,6 +12,7 @@ import com.lamp.guide.sdk.api.model.objectoperation.AppendObjectRequest;
 import com.lamp.guide.sdk.api.model.objectoperation.AppendObjectResponse;
 import com.lamp.guide.sdk.api.model.objectoperation.CompleteMultipartUploadRequest;
 import com.lamp.guide.sdk.api.model.objectoperation.CompleteMultipartUploadResponse;
+import com.lamp.guide.sdk.api.model.objectoperation.DoesObjectExistResponse;
 import com.lamp.guide.sdk.api.model.objectoperation.PutObjectRequest;
 import com.lamp.guide.sdk.api.model.objectoperation.PutObjectResponse;
 import com.lamp.guide.sdk.api.model.objectoperation.UploadFileRequest;
@@ -84,6 +86,11 @@ public class AliOssObjectOperation extends AliOssClient implements ObjectOperati
 			CompleteMultipartUploadRequest completeMultipartUploadRequest) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public boolean doesObjectExist(GenericRequest genericRequest) {
+		return ossClient.doesObjectExist(this.copyGenericRequest(genericRequest));
 	}
 }
 
