@@ -3,6 +3,8 @@ package com.lamp.guide.sdk.cloud.alicloud.oss;
 import java.util.Objects;
 
 import com.aliyun.oss.event.ProgressEventType;
+import com.aliyun.oss.model.OSSObject;
+import com.aliyun.oss.model.ObjectMetadata;
 import com.aliyun.oss.model.PutObjectResult;
 import com.lamp.guide.sdk.api.ObjectOperation;
 import com.lamp.guide.sdk.api.event.ProgressEvent;
@@ -12,6 +14,10 @@ import com.lamp.guide.sdk.api.model.objectoperation.AppendObjectRequest;
 import com.lamp.guide.sdk.api.model.objectoperation.AppendObjectResponse;
 import com.lamp.guide.sdk.api.model.objectoperation.CompleteMultipartUploadRequest;
 import com.lamp.guide.sdk.api.model.objectoperation.CompleteMultipartUploadResponse;
+import com.lamp.guide.sdk.api.model.objectoperation.DownloadFileRequest;
+import com.lamp.guide.sdk.api.model.objectoperation.DownloadFileResponse;
+import com.lamp.guide.sdk.api.model.objectoperation.GetObjectRequest;
+import com.lamp.guide.sdk.api.model.objectoperation.GetObjectResponse;
 import com.lamp.guide.sdk.api.model.objectoperation.PutObjectRequest;
 import com.lamp.guide.sdk.api.model.objectoperation.PutObjectResponse;
 import com.lamp.guide.sdk.api.model.objectoperation.UploadFileRequest;
@@ -51,6 +57,7 @@ public class AliOssObjectOperation extends AliOssClient implements ObjectOperati
 		
 		return putObjectResponse;
 	}
+	
 
 	public class AliProgressListener implements com.aliyun.oss.event.ProgressListener{
 
@@ -87,6 +94,43 @@ public class AliOssObjectOperation extends AliOssClient implements ObjectOperati
 	@Override
 	public boolean doesObjectExist(GenericRequest genericRequest) {
 		return ossClient.doesObjectExist(this.copyGenericRequest(genericRequest));
+	}
+
+	@Override
+	public GetObjectResponse getObject(GetObjectRequest getObjectRequest) {
+		
+		com.aliyun.oss.model.GetObjectRequest ossGetObjectRequest = new com.aliyun.oss.model.GetObjectRequest(getObjectRequest.getBucketName(),getObjectRequest.getKey());
+		
+		if(Objects.nonNull(getObjectRequest.getRange())) {
+			ossGetObjectRequest.setRange(getObjectRequest.getRange()[0], getObjectRequest.getRange()[1]);
+		}
+		if(Objects.nonNull(getObjectRequest.getModifiedSinceConstraint())) {
+			ossGetObjectRequest.setModifiedSinceConstraint(getObjectRequest.getModifiedSinceConstraint());
+		}
+		if(Objects.nonNull(getObjectRequest.getProgressListener())) {
+			ossGetObjectRequest.withProgressListener(new AliProgressListener(getObjectRequest.getProgressListener()));
+		}
+		if(Objects.nonNull(getObjectRequest.getFile())) {
+			ObjectMetadata objectMetadata = ossClient.getObject(ossGetObjectRequest, getObjectRequest.getFile()); 
+			GetObjectResponse getObjectResponse = new GetObjectResponse();
+			getObjectResponse.setBucketName(getObjectRequest.getBucketName());
+			getObjectResponse.setKey(getObjectRequest.getKey());
+			getObjectResponse.setMetadata(this.crateObjectMetadata(objectMetadata));
+			return getObjectResponse;
+		}else {
+			OSSObject object = ossClient.getObject(ossGetObjectRequest);
+			GetObjectResponse getObjectResponse = new GetObjectResponse();
+			getObjectResponse.setBucketName(object.getBucketName());
+			getObjectResponse.setKey(object.getKey());
+			getObjectResponse.setObjectContent(object.getObjectContent());
+		}
+		return null;
+	}
+
+	@Override
+	public DownloadFileResponse downloadFile(DownloadFileRequest downloadFileRequest) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
 

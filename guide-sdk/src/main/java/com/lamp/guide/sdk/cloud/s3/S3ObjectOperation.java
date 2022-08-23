@@ -6,6 +6,10 @@ import com.lamp.guide.sdk.api.model.objectoperation.AppendObjectRequest;
 import com.lamp.guide.sdk.api.model.objectoperation.AppendObjectResponse;
 import com.lamp.guide.sdk.api.model.objectoperation.CompleteMultipartUploadRequest;
 import com.lamp.guide.sdk.api.model.objectoperation.CompleteMultipartUploadResponse;
+import com.lamp.guide.sdk.api.model.objectoperation.DownloadFileRequest;
+import com.lamp.guide.sdk.api.model.objectoperation.DownloadFileResponse;
+import com.lamp.guide.sdk.api.model.objectoperation.GetObjectRequest;
+import com.lamp.guide.sdk.api.model.objectoperation.GetObjectResponse;
 import com.lamp.guide.sdk.api.model.objectoperation.PutObjectRequest;
 import com.lamp.guide.sdk.api.model.objectoperation.PutObjectResponse;
 import com.lamp.guide.sdk.api.model.objectoperation.UploadFileRequest;
@@ -41,6 +45,18 @@ public class S3ObjectOperation extends S3Client implements ObjectOperation {
 	@Override
 	public boolean doesObjectExist(GenericRequest genericRequest) {
 		return false;
+	}
+
+	@Override
+	public GetObjectResponse getObject(GetObjectRequest getObjectRequest) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public DownloadFileResponse downloadFile(DownloadFileRequest downloadFileRequest) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

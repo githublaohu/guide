@@ -4,11 +4,12 @@ import java.util.Objects;
 
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
-import com.lamp.guide.sdk.api.CloudConfig;
+import com.lamp.guide.sdk.CloudConfig;
+import com.lamp.guide.sdk.Initialization;
 import com.lamp.guide.sdk.api.http.GenericRequest;
 import com.lamp.guide.sdk.api.model.objectoperation.ObjectMetadata;
 
-public class AliOssClient {
+public class AliOssClient implements Initialization{
 
 	protected CloudConfig cloudConfig;
 
@@ -24,6 +25,16 @@ public class AliOssClient {
 			return null;
 		}
 		com.aliyun.oss.model.ObjectMetadata aliObjectMetadata = new com.aliyun.oss.model.ObjectMetadata();
+		
+				
+		return aliObjectMetadata;
+	}
+	
+	public ObjectMetadata crateObjectMetadata(com.aliyun.oss.model.ObjectMetadata objectMetadata){
+		if(Objects.isNull(objectMetadata)) {
+			return null;
+		}
+		ObjectMetadata aliObjectMetadata = new ObjectMetadata();
 		
 				
 		return aliObjectMetadata;

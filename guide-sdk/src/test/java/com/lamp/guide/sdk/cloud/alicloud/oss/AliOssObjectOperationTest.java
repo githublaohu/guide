@@ -1,6 +1,6 @@
 package com.lamp.guide.sdk.cloud.alicloud.oss;
 
-import com.lamp.guide.sdk.api.CloudConfig;
+import com.lamp.guide.sdk.CloudConfig;
 import com.lamp.guide.sdk.api.http.GenericRequest;
 import com.lamp.guide.sdk.api.model.objectoperation.PutObjectRequest;
 

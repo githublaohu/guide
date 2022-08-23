@@ -1,4 +1,4 @@
-package com.lamp.guide.sdk.api;
+package com.lamp.guide.sdk;
 
 import lombok.Data;
 
